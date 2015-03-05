@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <package>
   <name>error_handling</name>
-  <version>0.0.0</version>
+  <version>0.0.1</version>
   <description>The error_handling package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
-  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="willem@todo.todo">willem</maintainer>
+  <!-- <maintainer email="willem@lambertsmail.net">Jane Doe</maintainer> -->
+  <maintainer email="willem@lambertsmail.net">willem</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->

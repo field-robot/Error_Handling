@@ -1,5 +1,6 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "std_msgs/Int8.h"
 
 
 #include <sstream>
@@ -8,13 +9,9 @@
 int main(int argc, char **argv)
 {
 
-  ros::init(argc, argv, "error_handling");
-
+  ros::init(argc, argv, "error");
   ros::NodeHandle n;
-
- 
-  ros::Publisher chatter_pub = n.advertise<std_msgs::String>("error_handling", 1000);
-
+  ros::Publisher chatter_pub = n.advertise<std_msgs::String>("error", 1000);
   ros::Rate loop_rate(10);
 
   

@@ -12,7 +12,7 @@ int main (int argc, char **argv)
 {
 	ros::init(argc, argv, "subscriber");
 	ros::NodeHandle n;
-	ros::Subscriber sub = n.subscribe("error_handling", 1000, &chatterCallback);
+	ros::Subscriber sub = n.subscribe("error", 1000, &chatterCallback);
 	ros::Rate loop_rate(10);
 	
 	while (ros::ok())

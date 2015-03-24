@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include "std_msgs/String.h"
+//#include "std_msgs/String.h"
 #include "std_msgs/UInt8.h"
 
 
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 
   ros::init(argc, argv, "error");
   ros::NodeHandle n;
-  ros::Publisher chatter_pub = n.advertise<std_msgs::String>("error", 1000);
+  ros::Publisher errors = n.advertise<std_msgs::UInt8>("error", 1000);
   ros::Subscriber arduino_errors = n.subscribe("arduino_error",1, &ArduinoErrorHandler);
   ros::Rate loop_rate(10);
 
@@ -37,16 +37,15 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
     
-    std_msgs::String msg;
-    std::stringstream ss;
-    ss << " This is error_handler ";
-    msg.data = ss.str();
+    std_msgs::UInt8 msg;
+    
+    msg.data = 255;
 
 
-    ROS_INFO("%s", msg.data.c_str());
+    ROS_INFO("%i", msg.data);
 
   
-    chatter_pub.publish(msg);
+    errors.publish(msg);
 
     ros::spinOnce();
 

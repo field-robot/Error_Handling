@@ -1,9 +1,27 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-#include "std_msgs/Int8.h"
+#include "std_msgs/UInt8.h"
 
 
 #include <sstream>
+
+
+//variables for different errors
+
+bool battery_empty;
+bool imu_error;
+
+
+void ArduinoErrorHandler (const std_msgs::UInt8 &msg)
+{
+	switch(msg.data)
+	{
+		case 1: battery_empty = true; break;
+		case 2: imu_error = true; break;
+		
+		default: battery_empty = false; imu_error = false; break;
+	}
+}
 
 
 int main(int argc, char **argv)
@@ -12,6 +30,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "error");
   ros::NodeHandle n;
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("error", 1000);
+  ros::Subscriber arduino_errors = n.subscribe("arduino_error",1, &ArduinoErrorHandler);
   ros::Rate loop_rate(10);
 
   
